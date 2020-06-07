@@ -60,35 +60,33 @@ for (let i: number = 0; i < artikelTurbine.length; i++) {
 
     let button: HTMLButtonElement = document.createElement("button");
     button.innerHTML = "In den Warenkorb";
-    button.addEventListener("click", artikelcount);
+    button.addEventListener("click", addwarenkorb);
     document.getElementById("div" + i)?.appendChild(button);
     button.setAttribute("preis", artikelTurbine[i].preis.toString());
 
 }
 let summe: number = 0;
-let zähler: number = 0;
-let turbinenzähler: number = 0;
+let warenkorbcount: number = 0;
 let einkaufswagenDiv: HTMLDivElement = document.createElement("div");
 
-function artikelcount(_event: Event): void {
-    if (turbinenzähler >= 0) {
+function addwarenkorb(_event: Event): void {
+    if (warenkorbcount >= 0) {
         document.getElementById("itemwatchlist")?.appendChild(einkaufswagenDiv);
     }
-    turbinenzähler ++;
-    einkaufswagenDiv.innerHTML = turbinenzähler + "";
+    warenkorbcount ++;
+    einkaufswagenDiv.innerHTML = warenkorbcount + "";
 
-    if ( (<HTMLButtonElement>_event.currentTarget)?.getAttribute("preis")) {
-        summe = zähler + parseInt ((<HTMLButtonElement>_event.currentTarget)?.getAttribute("preis")!);
-        zähler = summe;
+    if ((<HTMLButtonElement>_event.currentTarget)?.getAttribute("preis")) {
+        summe = summe + parseInt ((<HTMLButtonElement>_event.currentTarget)?.getAttribute("preis")!);
     }
-    console.log(summe.toFixed(0));
+    console.log("Gesamtsumme (inkl. MwSt.) " + summe.toFixed(0) + "€");
 }
 
-let allCategory: HTMLAnchorElement = document.createElement ("a");
-allCategory.id = "home";
-allCategory.innerHTML = "Home";
-allCategory.addEventListener("click", ankerSortierer);
-document.getElementById("home")?.appendChild(allCategory);
+let alleItems: HTMLAnchorElement = document.createElement ("a");
+alleItems.id = "home";
+alleItems.innerHTML = "Home";
+alleItems.addEventListener("click", ankerSortierer);
+document.getElementById("home")?.appendChild(alleItems);
 
 let turbinenItems: HTMLAnchorElement = document.createElement("a");
 turbinenItems.id = "turbinen";

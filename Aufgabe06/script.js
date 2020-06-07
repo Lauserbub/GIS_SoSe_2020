@@ -42,31 +42,29 @@ for (let i = 0; i < artikelTurbine.length; i++) {
     document.getElementById("div" + i)?.appendChild(preis);
     let button = document.createElement("button");
     button.innerHTML = "In den Warenkorb";
-    button.addEventListener("click", artikelcount);
+    button.addEventListener("click", addwarenkorb);
     document.getElementById("div" + i)?.appendChild(button);
     button.setAttribute("preis", artikelTurbine[i].preis.toString());
 }
 let summe = 0;
-let zähler = 0;
-let turbinenzähler = 0;
+let warenkorbcount = 0;
 let einkaufswagenDiv = document.createElement("div");
-function artikelcount(_event) {
-    if (turbinenzähler >= 0) {
+function addwarenkorb(_event) {
+    if (warenkorbcount >= 0) {
         document.getElementById("itemwatchlist")?.appendChild(einkaufswagenDiv);
     }
-    turbinenzähler++;
-    einkaufswagenDiv.innerHTML = turbinenzähler + "";
+    warenkorbcount++;
+    einkaufswagenDiv.innerHTML = warenkorbcount + "";
     if (_event.currentTarget?.getAttribute("preis")) {
-        summe = zähler + parseInt(_event.currentTarget?.getAttribute("preis"));
-        zähler = summe;
+        summe = summe + parseInt(_event.currentTarget?.getAttribute("preis"));
     }
-    console.log(summe.toFixed(0));
+    console.log("Gesamtsumme (inkl. MwSt.) " + summe.toFixed(0) + "€");
 }
-let allCategory = document.createElement("a");
-allCategory.id = "home";
-allCategory.innerHTML = "Home";
-allCategory.addEventListener("click", ankerSortierer);
-document.getElementById("home")?.appendChild(allCategory);
+let alleItems = document.createElement("a");
+alleItems.id = "home";
+alleItems.innerHTML = "Home";
+alleItems.addEventListener("click", ankerSortierer);
+document.getElementById("home")?.appendChild(alleItems);
 let turbinenItems = document.createElement("a");
 turbinenItems.id = "turbinen";
 turbinenItems.innerHTML = "Turbinen";
