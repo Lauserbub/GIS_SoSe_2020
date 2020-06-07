@@ -42,14 +42,14 @@ for (let i = 0; i < artikelTurbine.length; i++) {
     document.getElementById("div" + i)?.appendChild(preis);
     let button = document.createElement("button");
     button.innerHTML = "In den Warenkorb";
-    button.addEventListener("click", addwarenkorb);
+    button.addEventListener("click", addWarenkorb);
     document.getElementById("div" + i)?.appendChild(button);
     button.setAttribute("preis", artikelTurbine[i].preis.toString());
 }
 let summe = 0;
 let warenkorbcount = 0;
 let einkaufswagenDiv = document.createElement("div");
-function addwarenkorb(_event) {
+function addWarenkorb(_event) {
     if (warenkorbcount >= 0) {
         document.getElementById("itemwatchlist")?.appendChild(einkaufswagenDiv);
     }
