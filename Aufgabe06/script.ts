@@ -1,99 +1,119 @@
 /* ctrl + shift + b zum überwachen*/
 /* Turbine interface*/
+
 interface Turbine {
     img: string;
     name: string;
-    preis: string;
+    beschreibung: string;
+    preis: number;
+    category: number;
 }
 
 /* Turbine*/
-let artikel1: Turbine = { img: "Flugzeugturbine.jpg", name: "Flugzeugturbine ", preis: "Zehner" };
-let artikel2: Turbine = { img: "Windturbine.jpg", name: "Windturbine", preis: "Zwanni" };
-let artikel3: Turbine = { img: "2Flugzeugturbinen.jpg", name: "2 FLugzeugturbinen Typ A", preis: "Machsch n Fuffi" };
-let artikel4: Turbine = { img: "Turbinencar.jpg", name: "Turbinen Auto ", preis: "10 Mille" };
-let artikel5: Turbine = { img: "WindturbineB.jpg", name: "Windturbine Typ B", preis: "Komm kriegsch gschenkt den Bumms" };
-let artikel6: Turbine = { img: "Wasserturbine.jpg", name: "Alte Wasserturbine", preis: "750€ VB" };
+let artikel1: Turbine = { img: "Flugzeugturbine.jpg", name: "Flugzeugturbine ", beschreibung: "Eine Flugzeugturbine", preis: 10, category: 1 };
+let artikel2: Turbine = { img: "Windturbine.jpg", name: "Windturbine", beschreibung: "Eine Windturbine", preis: 20, category: 1};
+let artikel3: Turbine = { img: "2Flugzeugturbinen.jpg", name: "2 FLugzeugturbinen Typ A", beschreibung: "Zwei Flugzeugturbins", preis: 50, category: 1 };
+let artikel4: Turbine = { img: "Turbinencar.jpg", name: "Turbinen Auto ", beschreibung: "Ein freshes car mit dem Elton John durch die Everglades slided", preis: 10000, category: 1 };
+let artikel5: Turbine = { img: "WindturbineB.jpg", name: "Windturbine Typ B", beschreibung: "Mashallah sag einfach die Hübsche Turbine", preis: 1, category: 1 };
+let artikel6: Turbine = { img: "Wasserturbine.jpg", name: "Alte Wasserturbine", beschreibung: "Blick is leer", preis: 750, category: 1 };
+let artikel7: Turbine = { img: "Doppelkorn2.jpg", name: "Doppelkorn", beschreibung: "Es", preis: 5, category: 2 };
+let artikel8: Turbine = { img: "Doppelkorn1.jpg", name: "Doppelkorn Premium", beschreibung: "geht", preis: 9.99, category: 2 };
+let artikel9: Turbine = { img: "Schneebesen.jpg", name: "Schneebesen", beschreibung: "wieder", preis: 6.95, category: 2 };
+let artikel10: Turbine = { img: "Eistee.jpg", name: "Eisteemischung", beschreibung: "los", preis: 4.99, category: 2  };
+let artikel11: Turbine = { img: "Kochtopf.jpg", name: "Kochtopf", beschreibung: "los", preis: 12, category: 2 };
+let artikel12: Turbine = { img: "Wasserleitung.jpg", name: "Funktionierende Wasserleitung", beschreibung: "los", preis: 100, category: 2 };
+let artikel13: Turbine = { img: "50cent.jpg", name: "Jemand der laut \"Es geht wieder los los los los los!\" schreit", beschreibung: "los", preis: 0.5, category: 2 };
+
 
 /* Turbinen Array*/
-let artikelTurbine: Turbine[] = [artikel1, artikel2, artikel3, artikel4, artikel5, artikel6];
+let artikelTurbine: Turbine[] = [artikel1, artikel2, artikel3, artikel4, artikel5, artikel6, artikel7, artikel8, artikel9, artikel10, artikel11, artikel12, artikel13];
 
-/* Süff interface */
-interface Süff {
-    img: string;
-    name: string;
-    preis: string;
+for (let i: number = 0; i < artikelTurbine.length; i++) {
+
+    if (artikelTurbine[i].category == 1) {
+        let newDiv: HTMLDivElement = document.createElement("div");
+        newDiv.id = "div" + i;
+        document.getElementsByClassName("Produkte").item(0)?.appendChild(newDiv);
+    }
+
+    if (artikelTurbine[i].category == 2) {
+        let newDiv: HTMLDivElement = document.createElement("div");
+        newDiv.id = "div" + i;
+        document.getElementsByClassName("Produkte").item(1)?.appendChild(newDiv);
+    }
+
+    let imgElement: HTMLImageElement = document.createElement("img");
+    imgElement.src = artikelTurbine[i].img;
+    document.getElementById("div" + i)?.appendChild(imgElement);
+
+    let name: HTMLParagraphElement = document.createElement("p");
+    name.innerHTML = artikelTurbine[i].name;
+    document.getElementById("div" + i)?.appendChild(name);
+
+    let beschreibung: HTMLParagraphElement = document.createElement("p");
+    beschreibung.innerHTML = artikelTurbine[i].beschreibung;
+    document.getElementById("div" + i)?.appendChild(beschreibung);
+
+    let preis: HTMLElement = document.createElement("p");
+    preis.innerHTML = artikelTurbine[i].preis + "€";
+    document.getElementById("div" + i)?.appendChild(preis);
+
+    let button: HTMLButtonElement = document.createElement("button");
+    button.innerHTML = "In den Warenkorb";
+    button.addEventListener("click", artikelcount);
+    document.getElementById("div" + i)?.appendChild(button);
+    button.setAttribute("preis", artikelTurbine[i].preis.toString());
+
+}
+let summe: number = 0;
+let zähler: number = 0;
+let turbinenzähler: number = 0;
+let einkaufswagenDiv: HTMLDivElement = document.createElement("div");
+
+function artikelcount(_event: Event): void {
+    if (turbinenzähler >= 0) {
+        document.getElementById("itemwatchlist")?.appendChild(einkaufswagenDiv);
+    }
+    turbinenzähler ++;
+    einkaufswagenDiv.innerHTML = turbinenzähler + "";
+
+    if ( (<HTMLButtonElement>_event.currentTarget)?.getAttribute("preis")) {
+        summe = zähler + parseInt ((<HTMLButtonElement>_event.currentTarget)?.getAttribute("preis")!);
+        zähler = summe;
+    }
+    console.log(summe.toFixed(0));
 }
 
-/* Süff */
-let artikel7: Süff = { img: "Doppelkorn2.jpg", name: "Doppelkorn", preis: "Fünfer" };
-let artikel8: Süff = { img: "Doppelkorn1.jpg", name: "Doppelkorn Premium", preis: "Zehner" };
-let artikel9: Süff = { img: "Schneebesen.jpg", name: "Schneebesen", preis: "6,95 Bei Kauf von 2 Doppelkorn und einer Eisteemischung umsonst" };
-let artikel10: Süff = { img: "Eistee.jpg", name: "Eisteemischung", preis: "4,99€" };
-let artikel11: Süff = { img: "Kochtopf.jpg", name: "Kochtopf", preis: "12€" };
-let artikel12: Süff = { img: "Wasserleitung.jpg", name: "Funktionierende Wasserleitung", preis: "Hunni" };
-let artikel13: Süff = { img: "50cent.jpg", name: "Jemand der laut \"Es geht wieder los los los los los!\" schreit", preis: "50 Pfennig" };
+let allCategory: HTMLAnchorElement = document.createElement ("a");
+allCategory.id = "home";
+allCategory.innerHTML = "Home";
+allCategory.addEventListener("click", ankerSortierer);
+document.getElementById("home")?.appendChild(allCategory);
 
-/* Süff Array */
-let artikelSüff: Süff[] = [artikel7, artikel8, artikel9, artikel10, artikel11, artikel12, artikel13];
+let turbinenItems: HTMLAnchorElement = document.createElement("a");
+turbinenItems.id = "turbinen";
+turbinenItems.innerHTML = "Turbinen";
+turbinenItems.addEventListener("click", ankerSortierer);
+document.getElementById("turbine")?.appendChild(turbinenItems);
 
+let süffItems: HTMLAnchorElement = document.createElement ("a");
+süffItems.id = "süff";
+süffItems.innerHTML = "Zutaten";
+süffItems.addEventListener("click", ankerSortierer);
+document.getElementById("süff")?.appendChild(süffItems);
 
-/* Trubine */
-for (let index: number = 0; index < artikelTurbine.length; index++) {
-    /* Div*/
-    let newDiv: HTMLDivElement = document.createElement("div");
-    newDiv.id = "div1" + index;
-    document.getElementsByClassName("Produkte").item(0)?.appendChild(newDiv);
-    
-    /* Image*/
-    let imgElement: HTMLImageElement = document.createElement("img");
-    imgElement.src = artikelTurbine[index].img;
-    document.getElementById("div1" + index)?.appendChild(imgElement);
+function ankerSortierer(_event: Event): void {
+    if ((<HTMLDivElement>_event.currentTarget).getAttribute("id") == "home") {
+        (<HTMLDivElement>document.getElementById("blockTurbine")).style.display = "block";
+        (<HTMLDivElement>document.getElementById("blockSüff")).style.display = "block";
+    }
+    if ((<HTMLDivElement>_event.currentTarget).getAttribute("id") == "turbinen") {
+        (<HTMLDivElement>document.getElementById("blockTurbine")).style.display = "block";
+        (<HTMLDivElement>document.getElementById("blockSüff")).style.display = "none";
+    }
+    if ((<HTMLDivElement>_event.currentTarget).getAttribute("id") == "süff") {
+        (<HTMLDivElement>document.getElementById("blockTurbine")).style.display = "none";
+        (<HTMLDivElement>document.getElementById("blockSüff")).style.display = "block";
+    }
 
-    /* Name*/
-    let name: HTMLParagraphElement = document.createElement("p");
-    name.innerHTML = artikelTurbine[index].name;
-    document.getElementById("div1" + index)?.appendChild(name);
-
-    /* Preis*/
-    let price: HTMLParagraphElement = document.createElement("p");
-    price.innerHTML = artikelTurbine[index].preis;
-    document.getElementById("div1" + index)?.appendChild(price);
-
-    /* Button*/
-    let kaufen: HTMLButtonElement = document.createElement("button");
-    kaufen.innerHTML = "In den Warenkorb";
-    document.getElementById("div1" + index)?.appendChild(kaufen);
-}
-
-/* if index = 6, dann htmlparagraphelemnt = document.createElement ("i);
-name.innerHtml = artikelTurbine[index].name;
-document.getElemntById("div1"+index)?.appendChild(name); */
-
-/* Süff*/
-
-for (let index: number = 0; index < artikelSüff.length; index++) {
-    /* Div*/
-    let newDiv: HTMLDivElement = document.createElement("div");
-    newDiv.id = "div2" + index;
-    document.getElementsByClassName("Produkte").item(1)?.appendChild(newDiv);
-
-    /* Image*/
-    let imgElement: HTMLImageElement = document.createElement("img");
-    imgElement.src = artikelSüff[index].img;
-    document.getElementById("div2" + index)?.appendChild(imgElement);
-
-    /* Name*/
-    let name: HTMLParagraphElement = document.createElement("p");
-    name.innerHTML = artikelSüff[index].name;
-    document.getElementById("div2" + index)?.appendChild(name);
-
-    /* Preis*/
-    let price: HTMLParagraphElement = document.createElement("p");
-    price.innerHTML = artikelSüff[index].preis;
-    document.getElementById("div2" + index)?.appendChild(price);
-
-    /* Button*/
-    let kaufen: HTMLButtonElement = document.createElement("button");
-    kaufen.innerHTML = "Warenkorb";
-    document.getElementById("div2" + index)?.appendChild(kaufen);
 }

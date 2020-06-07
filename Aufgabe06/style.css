@@ -68,11 +68,33 @@ nav img{
     height: 50px;
     float: right;
 }
+#itemwatchlist {
+    color: rgb(69, 69, 69);
+    margin-top: -60px;
+    margin-right: 20px;
+    width: 30px;
+    height: 30px;
+    float: right;
+    border-radius: 50%;
+    background-color: red;
+    opacity: 80%;
+}
 
 .dropdown {
     position: relative;
     display: inline-block;
 }
+
+#turbinen {
+    font-size: 30px;
+}
+#süff{
+    font-size: 30px;
+}
+#home {
+    font-size: 30px;
+}
+
 
 .dropinhalt {
     display: none;
@@ -163,7 +185,7 @@ p+i{
         
         }
         
-        #home{
+        #home1{
             position: relative;
             top: 20px;
             font-size: 40px;
@@ -213,11 +235,33 @@ p+i{
             height: 60px;
             float: right;
         }
-        
+        #itemwatchlist {
+            color: rgb(69, 69, 69);
+            margin-top: -70px;
+            margin-right: 30px;
+            width: 30px;
+            height: 30px;
+            float: right;
+            border-radius: 50%;
+            background-color: red;
+            opacity: 80%;
+        }
+
         .dropdown {
             position: relative;
             display: inline-block;
         }
+
+        #turbinen {
+            font-size: 30px;
+        }
+        #süff{
+            font-size: 30px;
+        }
+        #home {
+            font-size: 30px;
+        }
+
         
         .dropinhalt {
             display: none;
@@ -357,7 +401,20 @@ p+i{
             position: relative;
             display: inline-block;
         }
-        
+        #home1 {
+            font-size: 30px;
+        }
+
+        #turbinen {
+            font-size: 40px;
+        }
+        #süff{
+            font-size: 40px;
+        }
+        #home {
+            font-size: 40px;
+        }
+
         .dropinhalt {
             display: none;
             position: absolute;
@@ -384,7 +441,7 @@ p+i{
             background-color: #923c01;
         }
         
-        #home{
+        #home1{
             position: relative;
             top: 20px;
             font-size: 48px;

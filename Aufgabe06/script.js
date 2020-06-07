@@ -1,70 +1,94 @@
 "use strict";
+/* ctrl + shift + b zum überwachen*/
+/* Turbine interface*/
 /* Turbine*/
-let artikel1 = { img: "Flugzeugturbine.jpg", name: "Flugzeugturbine ", preis: "Zehner" };
-let artikel2 = { img: "Windturbine.jpg", name: "Windturbine", preis: "Zwanni" };
-let artikel3 = { img: "2Flugzeugturbinen.jpg", name: "2 FLugzeugturbinen Typ A", preis: "Machsch n Fuffi" };
-let artikel4 = { img: "Turbinencar.jpg", name: "Turbinen Auto ", preis: "10 Mille" };
-let artikel5 = { img: "WindturbineB.jpg", name: "Windturbine Typ B", preis: "Komm kriegsch gschenkt den Bumms" };
-let artikel6 = { img: "Wasserturbine.jpg", name: "Alte Wasserturbine", preis: "750€ VB" };
+let artikel1 = { img: "Flugzeugturbine.jpg", name: "Flugzeugturbine ", beschreibung: "Eine Flugzeugturbine", preis: 10, category: 1 };
+let artikel2 = { img: "Windturbine.jpg", name: "Windturbine", beschreibung: "Eine Windturbine", preis: 20, category: 1 };
+let artikel3 = { img: "2Flugzeugturbinen.jpg", name: "2 FLugzeugturbinen Typ A", beschreibung: "Zwei Flugzeugturbins", preis: 50, category: 1 };
+let artikel4 = { img: "Turbinencar.jpg", name: "Turbinen Auto ", beschreibung: "Ein freshes car mit dem Elton John durch die Everglades slided", preis: 10000, category: 1 };
+let artikel5 = { img: "WindturbineB.jpg", name: "Windturbine Typ B", beschreibung: "Mashallah sag einfach die Hübsche Turbine", preis: 1, category: 1 };
+let artikel6 = { img: "Wasserturbine.jpg", name: "Alte Wasserturbine", beschreibung: "Blick is leer", preis: 750, category: 1 };
+let artikel7 = { img: "Doppelkorn2.jpg", name: "Doppelkorn", beschreibung: "Es", preis: 5, category: 2 };
+let artikel8 = { img: "Doppelkorn1.jpg", name: "Doppelkorn Premium", beschreibung: "geht", preis: 9.99, category: 2 };
+let artikel9 = { img: "Schneebesen.jpg", name: "Schneebesen", beschreibung: "wieder", preis: 6.95, category: 2 };
+let artikel10 = { img: "Eistee.jpg", name: "Eisteemischung", beschreibung: "los", preis: 4.99, category: 2 };
+let artikel11 = { img: "Kochtopf.jpg", name: "Kochtopf", beschreibung: "los", preis: 12, category: 2 };
+let artikel12 = { img: "Wasserleitung.jpg", name: "Funktionierende Wasserleitung", beschreibung: "los", preis: 100, category: 2 };
+let artikel13 = { img: "50cent.jpg", name: "Jemand der laut \"Es geht wieder los los los los los!\" schreit", beschreibung: "los", preis: 0.5, category: 2 };
 /* Turbinen Array*/
-let artikelTurbine = [artikel1, artikel2, artikel3, artikel4, artikel5, artikel6];
-/* Süff */
-let artikel7 = { img: "Doppelkorn2.jpg", name: "Doppelkorn", preis: "Fünfer" };
-let artikel8 = { img: "Doppelkorn1.jpg", name: "Doppelkorn Premium", preis: "Zehner" };
-let artikel9 = { img: "Schneebesen.jpg", name: "Schneebesen", preis: "6,95 Bei Kauf von 2 Doppelkorn und einer Eisteemischung umsonst" };
-let artikel10 = { img: "Eistee.jpg", name: "Eisteemischung", preis: "4,99€" };
-let artikel11 = { img: "Kochtopf.jpg", name: "Kochtopf", preis: "12€" };
-let artikel12 = { img: "Wasserleitung.jpg", name: "Funktionierende Wasserleitung", preis: "Hunni" };
-let artikel13 = { img: "50cent.jpg", name: "Jemand der laut \"Es geht wieder los los los los los!\" schreit", preis: "50 Pfennig" };
-/* Süff Array */
-let artikelSüff = [artikel7, artikel8, artikel9, artikel10, artikel11, artikel12, artikel13];
-/* Trubine */
-for (let index = 0; index < artikelTurbine.length; index++) {
-    /* Div*/
-    let newDiv = document.createElement("div");
-    newDiv.id = "div1" + index;
-    document.getElementsByClassName("Produkte").item(0)?.appendChild(newDiv);
-    /* Image*/
+let artikelTurbine = [artikel1, artikel2, artikel3, artikel4, artikel5, artikel6, artikel7, artikel8, artikel9, artikel10, artikel11, artikel12, artikel13];
+for (let i = 0; i < artikelTurbine.length; i++) {
+    if (artikelTurbine[i].category == 1) {
+        let newDiv = document.createElement("div");
+        newDiv.id = "div" + i;
+        document.getElementsByClassName("Produkte").item(0)?.appendChild(newDiv);
+    }
+    if (artikelTurbine[i].category == 2) {
+        let newDiv = document.createElement("div");
+        newDiv.id = "div" + i;
+        document.getElementsByClassName("Produkte").item(1)?.appendChild(newDiv);
+    }
     let imgElement = document.createElement("img");
-    imgElement.src = artikelTurbine[index].img;
-    document.getElementById("div1" + index)?.appendChild(imgElement);
-    /* Name*/
+    imgElement.src = artikelTurbine[i].img;
+    document.getElementById("div" + i)?.appendChild(imgElement);
     let name = document.createElement("p");
-    name.innerHTML = artikelTurbine[index].name;
-    document.getElementById("div1" + index)?.appendChild(name);
-    /* Preis*/
-    let price = document.createElement("p");
-    price.innerHTML = artikelTurbine[index].preis;
-    document.getElementById("div1" + index)?.appendChild(price);
-    /* Button*/
-    let kaufen = document.createElement("button");
-    kaufen.innerHTML = "In den Warenkorb";
-    document.getElementById("div1" + index)?.appendChild(kaufen);
+    name.innerHTML = artikelTurbine[i].name;
+    document.getElementById("div" + i)?.appendChild(name);
+    let beschreibung = document.createElement("p");
+    beschreibung.innerHTML = artikelTurbine[i].beschreibung;
+    document.getElementById("div" + i)?.appendChild(beschreibung);
+    let preis = document.createElement("p");
+    preis.innerHTML = artikelTurbine[i].preis + "€";
+    document.getElementById("div" + i)?.appendChild(preis);
+    let button = document.createElement("button");
+    button.innerHTML = "In den Warenkorb";
+    button.addEventListener("click", artikelcount);
+    document.getElementById("div" + i)?.appendChild(button);
+    button.setAttribute("preis", artikelTurbine[i].preis.toString());
 }
-/* if index = 6, dann htmlparagraphelemnt = document.createElement ("i);
-name.innerHtml = artikelTurbine[index].name;
-document.getElemntById("div1"+index)?.appendChild(name); */
-/* Süff*/
-for (let index = 0; index < artikelSüff.length; index++) {
-    /* Div*/
-    let newDiv = document.createElement("div");
-    newDiv.id = "div2" + index;
-    document.getElementsByClassName("Produkte").item(1)?.appendChild(newDiv);
-    /* Image*/
-    let imgElement = document.createElement("img");
-    imgElement.src = artikelSüff[index].img;
-    document.getElementById("div2" + index)?.appendChild(imgElement);
-    /* Name*/
-    let name = document.createElement("p");
-    name.innerHTML = artikelSüff[index].name;
-    document.getElementById("div2" + index)?.appendChild(name);
-    /* Preis*/
-    let price = document.createElement("p");
-    price.innerHTML = artikelSüff[index].preis;
-    document.getElementById("div2" + index)?.appendChild(price);
-    /* Button*/
-    let kaufen = document.createElement("button");
-    kaufen.innerHTML = "Warenkorb";
-    document.getElementById("div2" + index)?.appendChild(kaufen);
+let summe = 0;
+let zähler = 0;
+let turbinenzähler = 0;
+let einkaufswagenDiv = document.createElement("div");
+function artikelcount(_event) {
+    if (turbinenzähler >= 0) {
+        document.getElementById("itemwatchlist")?.appendChild(einkaufswagenDiv);
+    }
+    turbinenzähler++;
+    einkaufswagenDiv.innerHTML = turbinenzähler + "";
+    if (_event.currentTarget?.getAttribute("preis")) {
+        summe = zähler + parseInt(_event.currentTarget?.getAttribute("preis"));
+        zähler = summe;
+    }
+    console.log(summe.toFixed(0));
+}
+let allCategory = document.createElement("a");
+allCategory.id = "home";
+allCategory.innerHTML = "Home";
+allCategory.addEventListener("click", ankerSortierer);
+document.getElementById("home")?.appendChild(allCategory);
+let turbinenItems = document.createElement("a");
+turbinenItems.id = "turbinen";
+turbinenItems.innerHTML = "Turbinen";
+turbinenItems.addEventListener("click", ankerSortierer);
+document.getElementById("turbine")?.appendChild(turbinenItems);
+let süffItems = document.createElement("a");
+süffItems.id = "süff";
+süffItems.innerHTML = "Zutaten";
+süffItems.addEventListener("click", ankerSortierer);
+document.getElementById("süff")?.appendChild(süffItems);
+function ankerSortierer(_event) {
+    if (_event.currentTarget.getAttribute("id") == "home") {
+        document.getElementById("blockTurbine").style.display = "block";
+        document.getElementById("blockSüff").style.display = "block";
+    }
+    if (_event.currentTarget.getAttribute("id") == "turbinen") {
+        document.getElementById("blockTurbine").style.display = "block";
+        document.getElementById("blockSüff").style.display = "none";
+    }
+    if (_event.currentTarget.getAttribute("id") == "süff") {
+        document.getElementById("blockTurbine").style.display = "none";
+        document.getElementById("blockSüff").style.display = "block";
+    }
 }
 //# sourceMappingURL=script.js.map
