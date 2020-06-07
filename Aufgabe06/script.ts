@@ -60,7 +60,7 @@ for (let i: number = 0; i < artikelTurbine.length; i++) {
 
     let button: HTMLButtonElement = document.createElement("button");
     button.innerHTML = "In den Warenkorb";
-    button.addEventListener("click", addwarenkorb);
+    button.addEventListener("click", addWarenkorb);
     document.getElementById("div" + i)?.appendChild(button);
     button.setAttribute("preis", artikelTurbine[i].preis.toString());
 
@@ -69,7 +69,7 @@ let summe: number = 0;
 let warenkorbcount: number = 0;
 let einkaufswagenDiv: HTMLDivElement = document.createElement("div");
 
-function addwarenkorb(_event: Event): void {
+function addWarenkorb(_event: Event): void {
     if (warenkorbcount >= 0) {
         document.getElementById("itemwatchlist")?.appendChild(einkaufswagenDiv);
     }

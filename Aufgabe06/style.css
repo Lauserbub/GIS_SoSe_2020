@@ -69,14 +69,13 @@ nav img{
     float: right;
 }
 #itemwatchlist {
-    color: rgb(42, 42, 42);
-    margin-top: -60px;
-    margin-right: 20px;
+    color: #ffffff;
+    margin-top: -38px;  
+    margin-right: 10px;
     width: 30px;
     height: 30px;
     float: right;
     border-radius: 50%;
-    background-color: red;
     opacity: 80%;
     font-size: 18px;
     line-height: 28px;
@@ -239,18 +238,18 @@ p+i{
             float: right;
         }
         #itemwatchlist {
-            color: rgb(42, 42, 42);
-            margin-top: -70px;
-            margin-right: 30px;
+            color: #ffffff;
+            margin-top: -50px;  
+            margin-right: 20px;
             width: 30px;
             height: 30px;
             float: right;
             border-radius: 50%;
-            background-color: red;
             opacity: 80%;
-            font-size: 20px;
+            font-size: 24px;
+            line-height: 28px;
+        
         }
-
         .dropdown {
             position: relative;
             display: inline-block;
