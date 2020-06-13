@@ -1,70 +1,47 @@
 /* ctrl + shift + b zum überwachen*/
 /* Turbine interface*/
 namespace Aufgabe07 {
-interface Turbine {
-    img: string;
-    name: string;
-    beschreibung: string;
-    preis: number;
-    category: number;
-}
 
-/* Turbine*/
-let artikel1: Turbine = { img: "Flugzeugturbine.jpg", name: "Flugzeugturbine ", beschreibung: "Eine Flugzeugturbine", preis: 10, category: 1 };
-let artikel2: Turbine = { img: "Windturbine.jpg", name: "Windturbine", beschreibung: "Eine Windturbine", preis: 20, category: 1};
-let artikel3: Turbine = { img: "2Flugzeugturbinen.jpg", name: "2 FLugzeugturbinen Typ A", beschreibung: "Zwei Flugzeugturbins", preis: 50, category: 1 };
-let artikel4: Turbine = { img: "Turbinencar.jpg", name: "Turbinen Auto ", beschreibung: "Ein freshes car mit dem Elton John durch die Everglades slided", preis: 10000, category: 1 };
-let artikel5: Turbine = { img: "WindturbineB.jpg", name: "Windturbine Typ B", beschreibung: "Mashallah sag einfach die Hübsche Turbine", preis: 1, category: 1 };
-let artikel6: Turbine = { img: "Wasserturbine.jpg", name: "Alte Wasserturbine", beschreibung: "Blick is leer", preis: 750, category: 1 };
-let artikel7: Turbine = { img: "Doppelkorn2.jpg", name: "Doppelkorn", beschreibung: "Es", preis: 5, category: 2 };
-let artikel8: Turbine = { img: "Doppelkorn1.jpg", name: "Doppelkorn Premium", beschreibung: "geht", preis: 9.99, category: 2 };
-let artikel9: Turbine = { img: "Schneebesen.jpg", name: "Schneebesen", beschreibung: "wieder", preis: 6.95, category: 2 };
-let artikel10: Turbine = { img: "Eistee.jpg", name: "Eisteemischung", beschreibung: "los", preis: 4.99, category: 2  };
-let artikel11: Turbine = { img: "Kochtopf.jpg", name: "Kochtopf", beschreibung: "los", preis: 12, category: 2 };
-let artikel12: Turbine = { img: "Wasserleitung.jpg", name: "Funktionierende Wasserleitung", beschreibung: "los", preis: 100, category: 2 };
-let artikel13: Turbine = { img: "50cent.jpg", name: "Jemand der laut \"Es geht wieder los los los los los!\" schreit", beschreibung: "los", preis: 0.5, category: 2 };
+export function createTurbine(): void {
 
+    for (let i: number = 0; i < turbine.length; i++) {
+        if (turbine[i].category == 1) {
+            let newDiv: HTMLDivElement = document.createElement("div");
+            newDiv.id = "div" + i;
+            document.getElementsByClassName("Produkte").item(0)?.appendChild(newDiv);
+            newDiv.setAttribute("index", i.toString());
+        }
+        if (turbine[i].category == 2) {
+            let newDiv: HTMLDivElement = document.createElement("div");
+            newDiv.id = "div" + i;
+            document.getElementsByClassName("Produkte").item(1)?.appendChild(newDiv);
+            newDiv.setAttribute("index", i.toString());
+        }
 
-/* Turbinen Array*/
-let artikelTurbine: Turbine[] = [artikel1, artikel2, artikel3, artikel4, artikel5, artikel6, artikel7, artikel8, artikel9, artikel10, artikel11, artikel12, artikel13];
+        let imgElement: HTMLImageElement = document.createElement("img");
+        imgElement.src = turbine[i].img;
+        document.getElementById("div" + i)?.appendChild(imgElement);
 
-for (let i: number = 0; i < artikelTurbine.length; i++) {
+        let name: HTMLParagraphElement = document.createElement("p");
+        name.innerHTML = turbine[i].name;
+        document.getElementById("div" + i)?.appendChild(name);
 
-    if (artikelTurbine[i].category == 1) {
-        let newDiv: HTMLDivElement = document.createElement("div");
-        newDiv.id = "div" + i;
-        document.getElementsByClassName("Produkte").item(0)?.appendChild(newDiv);
-    }
+        let beschreibung: HTMLParagraphElement = document.createElement("p");
+        beschreibung.innerHTML = turbine[i].beschreibung;
+        document.getElementById("div" + i)?.appendChild(beschreibung);
 
-    if (artikelTurbine[i].category == 2) {
-        let newDiv: HTMLDivElement = document.createElement("div");
-        newDiv.id = "div" + i;
-        document.getElementsByClassName("Produkte").item(1)?.appendChild(newDiv);
-    }
+        let preis: HTMLElement = document.createElement("p");
+        preis.innerHTML = turbine[i].preis + "€";
+        document.getElementById("div" + i)?.appendChild(preis);
 
-    let imgElement: HTMLImageElement = document.createElement("img");
-    imgElement.src = artikelTurbine[i].img;
-    document.getElementById("div" + i)?.appendChild(imgElement);
+        let button: HTMLButtonElement = document.createElement("button");
+        button.innerHTML = "In den Warenkorb";
+        button.addEventListener("click", addWarenkorb);
+        document.getElementById("div" + i)?.appendChild(button);
+        button.setAttribute("preis", turbine[i].preis.toString());
 
-    let name: HTMLParagraphElement = document.createElement("p");
-    name.innerHTML = artikelTurbine[i].name;
-    document.getElementById("div" + i)?.appendChild(name);
-
-    let beschreibung: HTMLParagraphElement = document.createElement("p");
-    beschreibung.innerHTML = artikelTurbine[i].beschreibung;
-    document.getElementById("div" + i)?.appendChild(beschreibung);
-
-    let preis: HTMLElement = document.createElement("p");
-    preis.innerHTML = artikelTurbine[i].preis + "€";
-    document.getElementById("div" + i)?.appendChild(preis);
-
-    let button: HTMLButtonElement = document.createElement("button");
-    button.innerHTML = "In den Warenkorb";
-    button.addEventListener("click", addWarenkorb);
-    document.getElementById("div" + i)?.appendChild(button);
-    button.setAttribute("preis", artikelTurbine[i].preis.toString());
-
-}
+    }   
+} 
 let summe: number = 0;
 let warenkorbcount: number = 0;
 let einkaufswagenDiv: HTMLDivElement = document.createElement("div");
