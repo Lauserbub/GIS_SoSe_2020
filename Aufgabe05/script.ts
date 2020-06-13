@@ -1,5 +1,6 @@
 /* ctrl + shift + b zum überwachen*/
 /* Turbine interface*/
+namespace Aufgabe05 {
 interface Turbine {
     img: string;
     name: string;
@@ -96,4 +97,5 @@ for (let index: number = 0; index < artikelSüff.length; index++) {
     let kaufen: HTMLButtonElement = document.createElement("button");
     kaufen.innerHTML = "Warenkorb";
     document.getElementById("div2" + index)?.appendChild(kaufen);
+}
 }

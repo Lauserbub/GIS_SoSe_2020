@@ -1,6 +1,5 @@
 /* ctrl + shift + b zum überwachen*/
 /* Turbine interface*/
-
 interface Turbine {
     img: string;
     name: string;
@@ -25,7 +24,7 @@ let artikel12: Turbine = { img: "Wasserleitung.jpg", name: "Funktionierende Wass
 let artikel13: Turbine = { img: "50cent.jpg", name: "Jemand der laut \"Es geht wieder los los los los los!\" schreit", beschreibung: "los", preis: 0.5, category: 2 };
 
 
-/* Turbinen Array*/
+/* Turbinen Array*/ /*
 let artikelTurbine: Turbine[] = [artikel1, artikel2, artikel3, artikel4, artikel5, artikel6, artikel7, artikel8, artikel9, artikel10, artikel11, artikel12, artikel13];
 
 for (let i: number = 0; i < artikelTurbine.length; i++) {
@@ -113,5 +112,4 @@ function ankerSortierer(_event: Event): void {
         (<HTMLDivElement>document.getElementById("blockTurbine")).style.display = "none";
         (<HTMLDivElement>document.getElementById("blockSüff")).style.display = "block";
     }
-
-}
+} */

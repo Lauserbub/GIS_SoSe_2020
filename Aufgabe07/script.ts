@@ -1,6 +1,6 @@
 /* ctrl + shift + b zum überwachen*/
 /* Turbine interface*/
-
+namespace Aufgabe07 {
 interface Turbine {
     img: string;
     name: string;
@@ -114,4 +114,5 @@ function ankerSortierer(_event: Event): void {
         (<HTMLDivElement>document.getElementById("blockSüff")).style.display = "block";
     }
 
+}
 }

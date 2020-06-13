@@ -1,6 +1,4 @@
 "use strict";
-/* ctrl + shift + b zum überwachen*/
-/* Turbine interface*/
 /* Turbine*/
 let artikel1 = { img: "Flugzeugturbine.jpg", name: "Flugzeugturbine ", beschreibung: "Eine Flugzeugturbine", preis: 10, category: 1 };
 let artikel2 = { img: "Windturbine.jpg", name: "Windturbine", beschreibung: "Eine Windturbine", preis: 20, category: 1 };
@@ -15,78 +13,93 @@ let artikel10 = { img: "Eistee.jpg", name: "Eisteemischung", beschreibung: "los"
 let artikel11 = { img: "Kochtopf.jpg", name: "Kochtopf", beschreibung: "los", preis: 12, category: 2 };
 let artikel12 = { img: "Wasserleitung.jpg", name: "Funktionierende Wasserleitung", beschreibung: "los", preis: 100, category: 2 };
 let artikel13 = { img: "50cent.jpg", name: "Jemand der laut \"Es geht wieder los los los los los!\" schreit", beschreibung: "los", preis: 0.5, category: 2 };
-/* Turbinen Array*/
-let artikelTurbine = [artikel1, artikel2, artikel3, artikel4, artikel5, artikel6, artikel7, artikel8, artikel9, artikel10, artikel11, artikel12, artikel13];
-for (let i = 0; i < artikelTurbine.length; i++) {
+/* Turbinen Array*/ /*
+let artikelTurbine: Turbine[] = [artikel1, artikel2, artikel3, artikel4, artikel5, artikel6, artikel7, artikel8, artikel9, artikel10, artikel11, artikel12, artikel13];
+
+for (let i: number = 0; i < artikelTurbine.length; i++) {
+
     if (artikelTurbine[i].category == 1) {
-        let newDiv = document.createElement("div");
+        let newDiv: HTMLDivElement = document.createElement("div");
         newDiv.id = "div" + i;
         document.getElementsByClassName("Produkte").item(0)?.appendChild(newDiv);
     }
+
     if (artikelTurbine[i].category == 2) {
-        let newDiv = document.createElement("div");
+        let newDiv: HTMLDivElement = document.createElement("div");
         newDiv.id = "div" + i;
         document.getElementsByClassName("Produkte").item(1)?.appendChild(newDiv);
     }
-    let imgElement = document.createElement("img");
+
+    let imgElement: HTMLImageElement = document.createElement("img");
     imgElement.src = artikelTurbine[i].img;
     document.getElementById("div" + i)?.appendChild(imgElement);
-    let name = document.createElement("p");
+
+    let name: HTMLParagraphElement = document.createElement("p");
     name.innerHTML = artikelTurbine[i].name;
     document.getElementById("div" + i)?.appendChild(name);
-    let beschreibung = document.createElement("p");
+
+    let beschreibung: HTMLParagraphElement = document.createElement("p");
     beschreibung.innerHTML = artikelTurbine[i].beschreibung;
     document.getElementById("div" + i)?.appendChild(beschreibung);
-    let preis = document.createElement("p");
+
+    let preis: HTMLElement = document.createElement("p");
     preis.innerHTML = artikelTurbine[i].preis + "€";
     document.getElementById("div" + i)?.appendChild(preis);
-    let button = document.createElement("button");
+
+    let button: HTMLButtonElement = document.createElement("button");
     button.innerHTML = "In den Warenkorb";
     button.addEventListener("click", addWarenkorb);
     document.getElementById("div" + i)?.appendChild(button);
     button.setAttribute("preis", artikelTurbine[i].preis.toString());
+
 }
-let summe = 0;
-let warenkorbcount = 0;
-let einkaufswagenDiv = document.createElement("div");
-function addWarenkorb(_event) {
+let summe: number = 0;
+let warenkorbcount: number = 0;
+let einkaufswagenDiv: HTMLDivElement = document.createElement("div");
+
+function addWarenkorb(_event: Event): void {
     if (warenkorbcount >= 0) {
         document.getElementById("itemwatchlist")?.appendChild(einkaufswagenDiv);
     }
-    warenkorbcount++;
+    warenkorbcount ++;
     einkaufswagenDiv.innerHTML = warenkorbcount + "";
-    if (_event.currentTarget?.getAttribute("preis")) {
-        summe = summe + parseInt(_event.currentTarget?.getAttribute("preis"));
+
+    if ((<HTMLButtonElement>_event.currentTarget)?.getAttribute("preis")) {
+        summe = summe + parseInt ((<HTMLButtonElement>_event.currentTarget)?.getAttribute("preis")!);
     }
     console.log("Gesamtsumme (inkl. MwSt.) " + summe.toFixed(0) + "€");
 }
-let alleItems = document.createElement("a");
+
+let alleItems: HTMLAnchorElement = document.createElement ("a");
 alleItems.id = "home";
 alleItems.innerHTML = "Home";
 alleItems.addEventListener("click", ankerSortierer);
 document.getElementById("home")?.appendChild(alleItems);
-let turbinenItems = document.createElement("a");
+
+let turbinenItems: HTMLAnchorElement = document.createElement("a");
 turbinenItems.id = "turbinen";
 turbinenItems.innerHTML = "Turbinen";
 turbinenItems.addEventListener("click", ankerSortierer);
 document.getElementById("turbine")?.appendChild(turbinenItems);
-let süffItems = document.createElement("a");
+
+let süffItems: HTMLAnchorElement = document.createElement ("a");
 süffItems.id = "süff";
 süffItems.innerHTML = "Zutaten";
 süffItems.addEventListener("click", ankerSortierer);
 document.getElementById("süff")?.appendChild(süffItems);
-function ankerSortierer(_event) {
-    if (_event.currentTarget.getAttribute("id") == "home") {
-        document.getElementById("blockTurbine").style.display = "block";
-        document.getElementById("blockSüff").style.display = "block";
+
+function ankerSortierer(_event: Event): void {
+    if ((<HTMLDivElement>_event.currentTarget).getAttribute("id") == "home") {
+        (<HTMLDivElement>document.getElementById("blockTurbine")).style.display = "block";
+        (<HTMLDivElement>document.getElementById("blockSüff")).style.display = "block";
     }
-    if (_event.currentTarget.getAttribute("id") == "turbinen") {
-        document.getElementById("blockTurbine").style.display = "block";
-        document.getElementById("blockSüff").style.display = "none";
+    if ((<HTMLDivElement>_event.currentTarget).getAttribute("id") == "turbinen") {
+        (<HTMLDivElement>document.getElementById("blockTurbine")).style.display = "block";
+        (<HTMLDivElement>document.getElementById("blockSüff")).style.display = "none";
     }
-    if (_event.currentTarget.getAttribute("id") == "süff") {
-        document.getElementById("blockTurbine").style.display = "none";
-        document.getElementById("blockSüff").style.display = "block";
+    if ((<HTMLDivElement>_event.currentTarget).getAttribute("id") == "süff") {
+        (<HTMLDivElement>document.getElementById("blockTurbine")).style.display = "none";
+        (<HTMLDivElement>document.getElementById("blockSüff")).style.display = "block";
     }
-}
+} */ 
 //# sourceMappingURL=script.js.map
