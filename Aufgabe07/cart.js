@@ -1,7 +1,7 @@
 "use strict";
 var Aufgabe07;
 (function (Aufgabe07) {
-    let anzahl = parseInt(localStorage.getItem("anzahlArtikel"));
+    let anzahl = parseInt(localStorage.getItem("turbineAnzahl"));
     let preis = 0;
     let gesamtpreis = document.createElement("p");
     for (let index = 0; index <= anzahl - 1; index++) {
@@ -22,7 +22,7 @@ var Aufgabe07;
         newDiv.appendChild(beschreibung);
         console.log(beschreibung);
         let price = document.createElement("p");
-        price.innerHTML = localStorage.getItem("artikel_preis" + index) + "€";
+        price.innerHTML = localStorage.getItem("turbine_preis" + index) + "€";
         newDiv.setAttribute("preis", price.innerHTML);
         newDiv.appendChild(price);
         console.log(price);

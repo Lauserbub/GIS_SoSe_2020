@@ -1,5 +1,5 @@
 namespace Aufgabe07 {
-    let anzahl: number = parseInt(localStorage.getItem("anzahlArtikel")!);
+    let anzahl: number = parseInt(localStorage.getItem("turbineAnzahl")!);
     let preis: number = 0;
     let gesamtpreis: HTMLParagraphElement = document.createElement("p");
     
@@ -28,7 +28,7 @@ namespace Aufgabe07 {
 
 
         let price: HTMLElement = document.createElement("p");
-        price.innerHTML = localStorage.getItem("artikel_preis" + index) + "€"!;
+        price.innerHTML = localStorage.getItem("turbine_preis" + index) + "€"!;
         newDiv.setAttribute("preis", price.innerHTML);
         newDiv.appendChild(price);
         console.log(price);
