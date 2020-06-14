@@ -11,7 +11,7 @@ namespace Aufgabe07 {
         console.log("div" + index);
 
         let imgElement: HTMLImageElement = document.createElement("img");
-        imgElement.src = localStorage.getItem("turbine_bild" + index)!;
+        imgElement.src = localStorage.getItem("turbine_img" + index)!;
         newDiv.appendChild(imgElement);
         console.log(imgElement);
 
@@ -27,18 +27,18 @@ namespace Aufgabe07 {
         console.log(beschreibung);
 
 
-        let preis: HTMLElement = document.createElement("p");
-        preis.innerHTML = localStorage.getItem("artikel_preis" + index) + "€"!;
-        newDiv.setAttribute("preis", preis.innerHTML);
-        newDiv.appendChild(preis);
-        console.log(preis);
+        let price: HTMLElement = document.createElement("p");
+        price.innerHTML = localStorage.getItem("artikel_preis" + index) + "€"!;
+        newDiv.setAttribute("preis", price.innerHTML);
+        newDiv.appendChild(price);
+        console.log(price);
 
         let button: HTMLButtonElement = document.createElement("button");
         button.innerHTML = "Entfernen";
         button.addEventListener("click", deleteWarenkorb);
         newDiv.appendChild(button);
     
-        preis = preis + parseFloat(preis.innerHTML);
+        preis = preis + parseFloat(price.innerHTML);
         gesamtpreis.innerHTML = "Gesamtpreis: " + preis.toFixed(0) + "€";
         document.getElementById ("cartValue")?.appendChild(gesamtpreis);
     }

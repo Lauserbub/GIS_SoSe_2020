@@ -1,10 +1,10 @@
 "use strict";
 var Aufgabe07;
 (function (Aufgabe07) {
-    loadTurbine("data.json");
+    loadTurbine("array.json");
     async function loadTurbine(_url) {
         let response = await fetch(_url);
-        let jsonArray = await Response.json();
+        let jsonArray = await response.json();
         Aufgabe07.turbine = await JSON.parse(JSON.stringify(jsonArray));
         Aufgabe07.createTurbine();
     }

@@ -2,6 +2,7 @@
 /* Turbine interface*/
 namespace Aufgabe07 {
 
+    
 export function createTurbine(): void {
 
     for (let i: number = 0; i < turbine.length; i++) {
@@ -45,6 +46,7 @@ export function createTurbine(): void {
 let summe: number = 0;
 let warenkorbcount: number = 0;
 let einkaufswagenDiv: HTMLDivElement = document.createElement("div");
+let cartTurbine: Turbine[] = [];
 
 function addWarenkorb(_event: Event): void {
     if (warenkorbcount >= 0) {
@@ -57,6 +59,18 @@ function addWarenkorb(_event: Event): void {
         summe = summe + parseInt ((<HTMLButtonElement>_event.currentTarget)?.getAttribute("preis")!);
     }
     console.log("Gesamtsumme (inkl. MwSt.) " + summe.toFixed(0) + "€");
+
+    let indexButton: string  = (<HTMLDivElement>(<HTMLElement>_event.currentTarget).parentElement).getAttribute("index")!;
+    let indexNr: number = parseInt(indexButton);
+    
+    cartTurbine.push(turbine[indexNr]);
+    localStorage.setItem("turbine_img" + (cartTurbine.length - 1), turbine[indexNr].img);
+    localStorage.setItem("turbine_name" + (cartTurbine.length - 1), turbine[indexNr].name);
+    localStorage.setItem("turbine_beschreibung" + (cartTurbine.length - 1), turbine[indexNr].beschreibung);
+    localStorage.setItem("turbine_preis" + (cartTurbine.length - 1), turbine[indexNr].preis.toString());
+    localStorage.setItem("turbineAnzahl", cartTurbine.length.toString());
+
+    
 }
 
 let alleItems: HTMLAnchorElement = document.createElement ("a");

@@ -8,11 +8,11 @@ namespace Aufgabe07 {
     }
     
     export let turbine: Turbine[];
-    loadTurbine("data.json");
+    loadTurbine("array.json");
 
     async function loadTurbine(_url: RequestInfo): Promise<void> {
         let response: Response = await fetch(_url);
-        let jsonArray: JSON = await Response.json();
+        let jsonArray: JSON = await response.json();
         turbine = await JSON.parse(JSON.stringify(jsonArray));
         createTurbine();
     }

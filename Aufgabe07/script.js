@@ -40,6 +40,7 @@ var Aufgabe07;
     let summe = 0;
     let warenkorbcount = 0;
     let einkaufswagenDiv = document.createElement("div");
+    let cartTurbine = [];
     function addWarenkorb(_event) {
         if (warenkorbcount >= 0) {
             document.getElementById("itemwatchlist")?.appendChild(einkaufswagenDiv);
@@ -50,6 +51,14 @@ var Aufgabe07;
             summe = summe + parseInt(_event.currentTarget?.getAttribute("preis"));
         }
         console.log("Gesamtsumme (inkl. MwSt.) " + summe.toFixed(0) + "€");
+        let indexButton = _event.currentTarget.parentElement.getAttribute("index");
+        let indexNr = parseInt(indexButton);
+        cartTurbine.push(Aufgabe07.turbine[indexNr]);
+        localStorage.setItem("turbine_img" + (cartTurbine.length - 1), Aufgabe07.turbine[indexNr].img);
+        localStorage.setItem("turbine_name" + (cartTurbine.length - 1), Aufgabe07.turbine[indexNr].name);
+        localStorage.setItem("turbine_beschreibung" + (cartTurbine.length - 1), Aufgabe07.turbine[indexNr].beschreibung);
+        localStorage.setItem("turbine_preis" + (cartTurbine.length - 1), Aufgabe07.turbine[indexNr].preis.toString());
+        localStorage.setItem("turbineAnzahl", cartTurbine.length.toString());
     }
     let alleItems = document.createElement("a");
     alleItems.id = "home";

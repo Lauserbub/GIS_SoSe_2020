@@ -1,0 +1,13 @@
+[{ "img": "Flugzeugturbine.jpg", "name": "Flugzeugturbine ", "beschreibung": "Eine Flugzeugturbine", "preis": 10, "category": 1 },
+{ "img": "Windturbine.jpg", "name": "Windturbine", "beschreibung": "Eine Windturbine", "preis": 20, "category": 1},
+{ "img": "2Flugzeugturbinen.jpg", "name": "2 FLugzeugturbinen Typ A", "beschreibung": "Zwei Flugzeugturbins", "preis": 50, "category": 1 },
+{ "img": "Turbinencar.jpg", "name": "Turbinen Auto ", "beschreibung": "Ein freshes car mit dem Elton John durch die Everglades slided", "preis": 10000, "category": 1 },
+{ "img": "WindturbineB.jpg", "name": "Windturbine Typ B", "beschreibung": "Mashallah sag einfach die Hübsche Turbine", "preis": 1, "category": 1 },
+{ "img": "Wasserturbine.jpg", "name": "Alte Wasserturbine", "beschreibung": "Blick is leer", "preis": 750, "category": 1 },
+{ "img": "Doppelkorn2.jpg", "name": "Doppelkorn", "beschreibung": "Es", "preis": 5, "category": 2 },
+{ "img": "Doppelkorn1.jpg", "name": "Doppelkorn Premium", "beschreibung": "geht", "preis": 9, "category": 2 },
+{ "img": "Schneebesen.jpg", "name": "Schneebesen", "beschreibung": "wieder", "preis": 7, "category": 2 },
+{ "img": "Eistee.jpg", "name": "Eisteemischung", "beschreibung": "los", "preis": 4, "category": 2  },
+{ "img": "Kochtopf.jpg", "name": "Kochtopf", "beschreibung": "los", "preis": 12, "category": 2 },
+{ "img": "Wasserleitung.jpg", "name": "Funktionierende Wasserleitung", "beschreibung": "los", "preis": 100, "category": 2 },
+{ "img": "50cent.jpg", "name": "Jemand der laut \"Es geht wieder los los los los los!\" schreit", "beschreibung": "los", "preis": 0.5, "category": 2 }]
