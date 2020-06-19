@@ -4,7 +4,7 @@ namespace Aufgabe08 {
 
     async function communicate(): Promise<void> {
         let formData: FormData = new FormData(document.forms[0]);
-        let url: string = "";
+        let url: string = "https://loginsose2020.herokuapp.com";
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         url = url + "?" + query.toString();
         await fetch(url);
