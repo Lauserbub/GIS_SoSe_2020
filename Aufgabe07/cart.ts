@@ -8,6 +8,7 @@ namespace Aufgabe07 {
         let newDiv: HTMLDivElement = document.createElement("div");
         (<HTMLElement>document.getElementById("blockWarenkorb")).appendChild(newDiv);
         newDiv.id = "div" + index;
+        newDiv.setAttribute("index", String(index));
         console.log("div" + index);
 
         let imgElement: HTMLImageElement = document.createElement("img");
@@ -47,7 +48,13 @@ namespace Aufgabe07 {
         let preisFunk: string = (<HTMLParagraphElement>(<HTMLElement>_event.currentTarget).parentElement).getAttribute("preis")!;
         preis = preis - parseFloat(preisFunk);
         gesamtpreis.innerHTML = "Gesamtpreis" + preis.toFixed(0) + "€";
+        let index: string = (<HTMLParagraphElement>(<HTMLElement>_event.currentTarget).parentElement).getAttribute("index")!;
         ((<HTMLDivElement>_event.currentTarget).parentElement!).remove();
+        localStorage.removeItem("turbine_img" + index);
+        localStorage.removeItem("turbine_beschreibung" + index);
+        localStorage.removeItem("turbine_name" + index);
+        localStorage.removeItem("turbine_preis" + index);
+
     }
 
     let deleteButton: HTMLButtonElement = (<HTMLButtonElement>document.getElementById("deleteButton"));
