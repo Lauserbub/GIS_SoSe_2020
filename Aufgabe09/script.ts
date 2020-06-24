@@ -12,7 +12,7 @@ namespace Aufgabe09 {
         let url: string = "https://loginsose2020.herokuapp.com";
         url += "/html";
         let query: URLSearchParams = new URLSearchParams(<any>formData);
-        url = url + "?" + query.toString();
+        url += "?" + query.toString();
 
         let response: Response = await fetch(url);
         let responseText: string = await response.text();
@@ -26,7 +26,7 @@ namespace Aufgabe09 {
         let url: string = "https://loginsose2020.herokuapp.com";
         url += "/json";
         let query: URLSearchParams = new URLSearchParams(<any>formData);
-        url = url + "?" + query.toString();
+        url += "?" + query.toString();
 
         let response: Response = await fetch(url);
         let responseText: string = await response.json();
